@@ -8,14 +8,14 @@ namespace DungeonsOfDoom.Core.Creatures;
 
 public class Zombie : Monster
 {
-    public Zombie() : base("Zombie", 10)
+    public Zombie() : base("Zombie", 5)
     {
     }
 
     public override AttackResult Attack(Creature opponent, int damage = 5)
     {
         if (opponent.Health > Health)
-            damage = 1;
+            damage = 5;
 
         return base.Attack(opponent, damage);
 

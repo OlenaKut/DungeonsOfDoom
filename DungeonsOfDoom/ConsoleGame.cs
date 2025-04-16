@@ -2,6 +2,7 @@
 using DungeonsOfDoom.Core.Creatures;
 using DungeonsOfDoom.Core.Items;
 using System.Text;
+using Utils;
 
 namespace DungeonsOfDoom;
 internal class ConsoleGame
@@ -13,6 +14,13 @@ internal class ConsoleGame
     {
         Console.OutputEncoding = Encoding.UTF8;
         Console.CursorVisible = false;
+
+        var BackPack = new BackPack<int>();
+        foreach (var item in BackPack)
+        {
+            Console.WriteLine(item);
+        }
+
 
         player = new Player();
         CreateRooms();
@@ -133,7 +141,9 @@ internal class ConsoleGame
             }
             else
             {
+                player.Backpack.Add(room.MonsterInRoom);
                 room.MonsterInRoom = null;
+
             }
         }
 
@@ -142,7 +152,7 @@ internal class ConsoleGame
 
     void PrintAttackResult(AttackResult result)
     {
-        Console.WriteLine($"{result.Attacker.Name} hurts {result.Opponent.Name} with {result.Damage} damage.");
+        ConsoleUtils.AnimeText($"{result.Attacker.Name} hurts {result.Opponent.Name} with {result.Damage} damage.");
         Console.ReadKey();
     }
 

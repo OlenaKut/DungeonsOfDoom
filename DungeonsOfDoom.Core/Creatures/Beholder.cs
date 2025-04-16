@@ -12,5 +12,14 @@ public class Beholder : Monster
     {
 
     }
+    public override AttackResult Attack(Creature opponent, int damage = 10)
+    {
+        if (opponent.Health > Health)
+            damage = 10;
+
+        return base.Attack(opponent, damage);
+
+    }
+
 
 }
